@@ -1,4 +1,5 @@
 import {
+  AlchemyProvider,
   Block,
   BlockTag,
   Network,
@@ -17,6 +18,23 @@ async function initWeb3Provider(): Promise<Web3Provider> {
   try {
     const provider = await getProvider();
     return new Web3Provider(provider);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error("Error initializing the provider");
+    }
+  }
+}
+
+/**
+ *
+ * @returns Inits the Alchemy Provider
+ */
+async function initAlchemyProvider(): Promise<AlchemyProvider> {
+  try {
+    const apiKey = "oSS1-5aLuXc76kFz8eukiTZBrFF0mNvG";
+    return new AlchemyProvider("homestead", apiKey);
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);
@@ -131,4 +149,5 @@ export {
   getEthBalance,
   lookupAddress,
   getNetwork,
+  initAlchemyProvider,
 };

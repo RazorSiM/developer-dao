@@ -1,8 +1,9 @@
+import { initAlchemyProvider, initWeb3Provider } from "~/services/contracts";
+
 import { BigNumberish } from "@ethersproject/bignumber";
 import { ContractTransaction } from "@ethersproject/contracts";
 import { DevsForRevolution__factory } from "~/types/chain";
 import { formatUnits } from "@ethersproject/units";
-import { initWeb3Provider } from "~/services/contracts";
 
 const contractAddress = "0x25ed58c027921E14D86380eA2646E3a1B5C55A8b";
 
@@ -25,7 +26,7 @@ const claim = async (id: BigNumberish): Promise<ContractTransaction> => {
 
 const getTokenURI = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -41,7 +42,7 @@ const getTokenURI = async (id: BigNumberish): Promise<string> => {
 };
 const totalSupply = async (): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -59,7 +60,7 @@ const totalSupply = async (): Promise<string> => {
 
 const getClothing = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -76,7 +77,7 @@ const getClothing = async (id: BigNumberish): Promise<string> => {
 
 const getIndustry = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -93,7 +94,7 @@ const getIndustry = async (id: BigNumberish): Promise<string> => {
 
 const getLanguage = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -110,7 +111,7 @@ const getLanguage = async (id: BigNumberish): Promise<string> => {
 
 const getLocation = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -127,7 +128,7 @@ const getLocation = async (id: BigNumberish): Promise<string> => {
 
 const getMind = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -144,7 +145,7 @@ const getMind = async (id: BigNumberish): Promise<string> => {
 
 const getOS = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -161,7 +162,7 @@ const getOS = async (id: BigNumberish): Promise<string> => {
 
 const getTextEditor = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -178,7 +179,7 @@ const getTextEditor = async (id: BigNumberish): Promise<string> => {
 
 const getVibe = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -195,7 +196,7 @@ const getVibe = async (id: BigNumberish): Promise<string> => {
 
 const getOwnerOf = async (id: BigNumberish): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -212,7 +213,7 @@ const getOwnerOf = async (id: BigNumberish): Promise<string> => {
 
 const getBalanceOf = async (walletAddress: string): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
@@ -234,7 +235,7 @@ const getTokenOfOwnerByIndex = async (
   index: BigNumberish
 ): Promise<string> => {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     const devForRev = DevsForRevolution__factory.connect(
       contractAddress,
       provider
