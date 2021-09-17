@@ -1,7 +1,7 @@
 {
-  "name": "vue-dapp-starter",
-  "description": "A starter template for a Web3 dapp based on Vue3 running on Vite and Typescript.",
-  "homepage": "https://github.com/RazorSiM/vue-dapp-starter",
+  "name": "developer-dao",
+  "description": "A simple nft viewer for the developer-dao smartcontract.",
+  "homepage": "https://github.com/RazorSiM/developer-dao",
   "author": {
     "name": "Simone 'Raz' Colabufalo",
     "email": "me@raz.works",
