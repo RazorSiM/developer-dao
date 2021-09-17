@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-between px-5 py-3">
-    <a href="https://github.com/RazorSiM" target="_blank">
+    <a href="https://github.com/RazorSiM/developer-dao" target="_blank">
       <IconCodiconGithubInverted class="h-8 w-8" />
     </a>
 
