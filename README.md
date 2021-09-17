@@ -1,6 +1,8 @@
 # Vue3 Developer DAO NFT Viewer example
 
-Made this example app to show nft data based on the id.
+Online at: [https://devdao.raz.works/#/](https://devdao.raz.works/#/)
+
+I made this example app to show nft data based on its id.
 
 My Vite starter template for fast prototyping on web3. If you want to try it:
 
