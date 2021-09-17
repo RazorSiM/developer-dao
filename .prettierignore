@@ -6,3 +6,5 @@ dist-ssr
 build
 .gitignore
 yarn.lock
+auto-imports.d.ts
+components.d.ts
