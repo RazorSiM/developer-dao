@@ -22,7 +22,7 @@
           type="text"
           class="
             italic
-            md:(ml-1.5)
+            ml-1.5
             bg-transparent
             font-plex font-semibold
             text-secondary
