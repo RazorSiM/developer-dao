@@ -101,6 +101,7 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
 
   async function getOwnerTokenIDs() {
     status.value = Status.RUNNING;
+    ownerData.tokenIDs = [];
     try {
       if (parseInt(ownerData.balance) > 1) {
         for (let i = 0; i < parseInt(ownerData.balance); i++) {
