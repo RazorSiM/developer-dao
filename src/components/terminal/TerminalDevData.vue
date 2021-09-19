@@ -20,7 +20,13 @@
       <div class="mt-3">Proceed?</div>
       <div>
         <button
-          class="text-accent font-bold font-plex"
+          class="
+            text-accent
+            font-bold font-plex
+            focus:outline-none
+            hover:text-primary
+            transition
+          "
           @click="$emit('claim', id)"
         >
           Yes</button
