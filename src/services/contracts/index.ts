@@ -68,7 +68,7 @@ async function getNetwork(): Promise<Network> {
 async function lookupAddress(walletAddress: string): Promise<string> {
   try {
     if (isAddress(walletAddress)) {
-      const provider = await initWeb3Provider();
+      const provider = await initAlchemyProvider();
       const network = await getNetwork();
       if (network.chainId !== 1) {
         return "";

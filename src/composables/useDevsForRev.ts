@@ -18,7 +18,6 @@ import {
 
 import { BigNumberish } from "@ethersproject/bignumber";
 import { Ref } from "vue";
-import { lookup } from "dns";
 import { lookupAddress } from "~/services/contracts";
 
 const Status = {
