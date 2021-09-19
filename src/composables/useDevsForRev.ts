@@ -18,6 +18,8 @@ import {
 
 import { BigNumberish } from "@ethersproject/bignumber";
 import { Ref } from "vue";
+import { lookup } from "dns";
+import { lookupAddress } from "~/services/contracts";
 
 const Status = {
   IDLE: "IDLE",
@@ -77,7 +79,10 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
       ownerData.wallet = res[9];
       ownerData.balance = await _getBalanceOf(ownerData.wallet);
       await getOwnerTokenIDs();
-
+      const ens = await lookupAddress(ownerData.wallet);
+      if (ens !== "") {
+        ownerData.wallet = ens;
+      }
       const tokenURIBase64str = res[0].split(",")[1];
 
       const { image, name } = JSON.parse(atob(tokenURIBase64str));
