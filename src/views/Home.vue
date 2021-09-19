@@ -42,12 +42,17 @@
         :status="nftLoading"
         :nft-data="nftData"
         :owner-data="ownerData"
+        :gas-units="estimate"
+        :gas-price="gasPrice"
+        :eth-price="ethPrice"
+        @claim="handleClaim"
       />
     </TerminalWindow>
   </div>
 </template>
 <script setup lang="ts">
 import { useDevsForRev } from "~/composables/useDevsForRev";
+import { $fetch } from "ohmyfetch";
 
 let nftIDInput = $ref<HTMLElement>();
 let nftID = ref("");
@@ -56,12 +61,26 @@ const {
   status: nftLoading,
   totalSupply,
   nftData,
+  estimate,
   ownerData,
+  claimNFT,
   getTotalSupply,
 } = useDevsForRev(nftIDNumber);
-
+let gasPrice = $ref(0);
+let ethPrice = $ref(0);
+const handleClaim = () => {
+  claimNFT();
+};
 onMounted(async () => {
   nftIDInput.focus();
   await getTotalSupply();
+  const { data } = await $fetch(
+    "https://www.gasnow.org/api/v3/gas/price?utm_source=:DevDaoRaz"
+  );
+  const { ethereum } = await $fetch(
+    "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd"
+  );
+  gasPrice = data.standard;
+  ethPrice = ethereum.usd;
 });
 </script>

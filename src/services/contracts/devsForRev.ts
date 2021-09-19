@@ -7,6 +7,23 @@ import { formatUnits } from "@ethersproject/units";
 
 const contractAddress = "0x25ed58c027921E14D86380eA2646E3a1B5C55A8b";
 
+const estimateClaim = async (id: BigNumberish): Promise<string> => {
+  try {
+    const provider = await initWeb3Provider();
+    const devForRev = DevsForRevolution__factory.connect(
+      contractAddress,
+      provider.getSigner()
+    );
+    console.log(id);
+    return formatUnits(await devForRev.estimateGas.claim(id), "wei");
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error("Cannot estimate the gas");
+    }
+  }
+};
 const claim = async (id: BigNumberish): Promise<ContractTransaction> => {
   try {
     const provider = await initWeb3Provider();
@@ -36,7 +53,7 @@ const getTokenURI = async (id: BigNumberish): Promise<string> => {
     if (error instanceof Error) {
       throw new Error(error.message);
     } else {
-      throw new Error("Invalid Token ID");
+      throw new Error("Invalid Token ID or Not yet claimed");
     }
   }
 };
@@ -270,4 +287,5 @@ export {
   getOwnerOf,
   getBalanceOf,
   getTokenOfOwnerByIndex,
+  estimateClaim,
 };

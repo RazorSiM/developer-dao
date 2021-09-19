@@ -2,8 +2,31 @@
   <div v-if="status === 'RUNNING'" class="mt-6 animate-pulse">
     ...LOADING...
   </div>
-  <div v-if="status === 'ERROR'" class="mt-6 text-red-500 font-bold">
-    COMMAND ERROR
+  <div v-if="status === 'ERROR'" class="mt-6 font-bold">
+    <div class="text-red-500">COMMAND ERROR</div>
+    <template v-if="gasUnits !== ''">
+      <div>.</div>
+      <div>.</div>
+      <div>.</div>
+      <div class="mt-3">It seems like you may be able to claim this ID.</div>
+      <div>
+        The amount to spend in gas units is
+        <span class="text-secondary">{{ gasUnits }}</span
+        >.
+      </div>
+      <div>
+        That's roughly <span class="text-primary">${{ gasCost }}</span>
+      </div>
+      <div class="mt-3">Proceed?</div>
+      <div>
+        <button
+          class="text-accent font-bold font-plex"
+          @click="$emit('claim', id)"
+        >
+          Yes</button
+        >/<span>no</span>
+      </div>
+    </template>
   </div>
   <div v-if="status === 'SUCCESS'" class="flex flex-col space-y-3 mt-6">
     <template v-for="(value, item) in nftData" :key="item">
@@ -27,7 +50,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-defineProps({
+defineEmits(["claim"]);
+const props = defineProps({
   id: {
     type: String,
     default: "1",
@@ -63,5 +87,24 @@ defineProps({
       };
     },
   },
+  gasUnits: {
+    type: String,
+    default: "",
+  },
+  gasPrice: {
+    type: Number,
+    default: 0,
+  },
+  ethPrice: {
+    type: Number,
+    default: 0,
+  },
+});
+
+let gasCost = $computed(() => {
+  return (
+    ((props.gasPrice * parseFloat(props.gasUnits)) / 1e18) *
+    props.ethPrice
+  ).toFixed(2);
 });
 </script>

@@ -1,4 +1,6 @@
 import {
+  claim as _claim,
+  estimateClaim as _estimateClaim,
   getBalanceOf as _getBalanceOf,
   getClothing as _getClothing,
   getIndustry as _getIndustry,
@@ -44,7 +46,7 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
       balance: "",
       tokenIDs: [],
     });
-
+  const estimate = ref("");
   const totalSupply = ref("####");
 
   async function getTokenData() {
@@ -90,11 +92,26 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
       status.value = Status.SUCCESS;
     } catch (error) {
       status.value = Status.ERROR;
+      estimate.value = await _estimateClaim(unref(id));
 
       if (error instanceof Error) {
         throw new Error(error.message);
       } else {
         throw new Error("Error getting the nft data");
+      }
+    }
+  }
+
+  async function claimNFT() {
+    try {
+      return await (await _claim(unref(id))).wait();
+    } catch (error) {
+      status.value = Status.ERROR;
+
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      } else {
+        throw new Error("Cannot claim the nft");
       }
     }
   }
@@ -144,9 +161,11 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
   return {
     status,
     nftData,
+    estimate,
     ownerData,
     totalSupply,
     getTokenData,
     getTotalSupply,
+    claimNFT,
   };
 }

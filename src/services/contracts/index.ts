@@ -33,8 +33,7 @@ async function initWeb3Provider(): Promise<Web3Provider> {
  */
 async function initAlchemyProvider(): Promise<AlchemyProvider> {
   try {
-    const apiKey = "oSS1-5aLuXc76kFz8eukiTZBrFF0mNvG";
-    return new AlchemyProvider("homestead", apiKey);
+    return new AlchemyProvider("homestead", import.meta.env.VITE_ALCHEMY_KEY);
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(error.message);
