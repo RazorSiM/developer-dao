@@ -2,7 +2,6 @@
   <div
     :class="globalStore.getTheme"
     class="
-      rooterone
       min-h-screen
       w-full
       transition
@@ -10,26 +9,16 @@
       duration-100
       p-4
       globalBackground
+      flex flex-col
+      justify-between
     "
   >
-    <Header />
+    <Header class="py-3" />
 
     <div class="container mx-auto">
       <slot />
     </div>
-    <div class="absolute bottom-0 py-3 text-xs">
-      Handcrafted by me with the help of
-      <a
-        href="https://v3.vuejs.org/guide/introduction.html"
-        target="_blank"
-        class="text-tertiary"
-        >Vue3</a
-      >
-      and
-      <a href="https://windicss.org/" target="_blank" class="text-secondary"
-        >WindiCSS</a
-      >
-    </div>
+    <Footer class="py-3" />
   </div>
 </template>
 <setup lang="ts">

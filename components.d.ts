@@ -6,6 +6,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BackgroundPattern: typeof import('./src/components/globals/BackgroundPattern.vue')['default']
     DarkToggle: typeof import('./src/components/globals/DarkToggle.vue')['default']
+    Footer: typeof import('./src/components/blocks/Footer.vue')['default']
     Header: typeof import('./src/components/blocks/Header.vue')['default']
     IconCodiconGithubInverted: typeof import('~icons/codicon/github-inverted')['default']
     IconHeroiconsOutlineCheckCircle: typeof import('~icons/heroicons-outline/check-circle')['default']

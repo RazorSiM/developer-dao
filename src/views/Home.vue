@@ -1,19 +1,10 @@
 <template>
-  <div
-    class="
-      lg:(h-screen
-      -mt-[95px])
-      mt-20
-      flex flex-col
-      justify-center
-      items-center
-    "
-  >
+  <div class="flex flex-col justify-center items-center">
     <TerminalWindow
       :title-bar="`DevsForRev #${totalSupply}`"
       command="cat"
       distro-title="Arch"
-      class="max-w-2xl"
+      class="max-w-2xl my-3"
     >
       <TerminalCommand command="ethget --project devdao --id ">
         <input
