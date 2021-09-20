@@ -16,6 +16,8 @@ import {
   totalSupply as _totalSupply,
 } from "~/services/contracts/devsForRev";
 
+import { useWalletStore } from "~/stores/wallet";
+
 import { BigNumberish } from "@ethersproject/bignumber";
 import { Ref } from "vue";
 import { lookupAddress } from "~/services/contracts";
@@ -50,6 +52,8 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
   const estimate = ref("");
   const totalSupply = ref("####");
 
+  const walletStore = useWalletStore();
+
   async function getTokenData() {
     status.value = Status.RUNNING;
     try {
@@ -79,9 +83,11 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
       ownerData.balance = await _getBalanceOf(ownerData.wallet);
       await getOwnerTokenIDs();
       const ens = await lookupAddress(ownerData.wallet);
+
       if (ens !== "") {
         ownerData.wallet = ens;
       }
+
       const tokenURIBase64str = res[0].split(",")[1];
 
       const { image, name } = JSON.parse(atob(tokenURIBase64str));
@@ -96,7 +102,9 @@ export function useDevsForRev(id: BigNumberish | Ref<BigNumberish>) {
       status.value = Status.SUCCESS;
     } catch (error) {
       status.value = Status.ERROR;
-      estimate.value = await _estimateClaim(unref(id));
+      if (walletStore.connected) {
+        estimate.value = await _estimateClaim(unref(id));
+      }
 
       if (error instanceof Error) {
         throw new Error(error.message);

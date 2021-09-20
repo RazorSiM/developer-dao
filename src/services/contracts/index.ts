@@ -49,7 +49,7 @@ async function initAlchemyProvider(): Promise<AlchemyProvider> {
  */
 async function getNetwork(): Promise<Network> {
   try {
-    const provider = await initWeb3Provider();
+    const provider = await initAlchemyProvider();
     return await provider.getNetwork();
   } catch (error) {
     if (error instanceof Error) {
@@ -68,7 +68,7 @@ async function getNetwork(): Promise<Network> {
 async function lookupAddress(walletAddress: string): Promise<string> {
   try {
     if (isAddress(walletAddress)) {
-      const provider = await initWeb3Provider();
+      const provider = await initAlchemyProvider();
       const network = await getNetwork();
       if (network.chainId !== 1) {
         return "";
