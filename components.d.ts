@@ -9,6 +9,7 @@ declare module 'vue' {
     Footer: typeof import('./src/components/blocks/Footer.vue')['default']
     Header: typeof import('./src/components/blocks/Header.vue')['default']
     IconCodiconGithubInverted: typeof import('~icons/codicon/github-inverted')['default']
+    IconCodiconTwitter: typeof import('~icons/codicon/twitter')['default']
     IconHeroiconsOutlineCheckCircle: typeof import('~icons/heroicons-outline/check-circle')['default']
     IconHeroiconsOutlineColorSwatch: typeof import('~icons/heroicons-outline/color-swatch')['default']
     IconMdiArch: typeof import('~icons/mdi/arch')['default']
