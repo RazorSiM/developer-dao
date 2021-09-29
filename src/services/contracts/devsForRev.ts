@@ -14,7 +14,6 @@ const estimateClaim = async (id: BigNumberish): Promise<string> => {
       contractAddress,
       provider.getSigner()
     );
-    console.log(id);
     return formatUnits(await devForRev.estimateGas.claim(id), "wei");
   } catch (error) {
     if (error instanceof Error) {
