@@ -1,4 +1,5 @@
 <template>
+  <Avatar v-if="walletStore.getConnected" />
   <button
     :class="buttonColor"
     class="
@@ -12,11 +13,18 @@
       p-2
       leading-none
       font-medium
-      shadow
+      flex flex-col
+      items-center
     "
     @click="handleButton()"
   >
-    {{ buttonText }}
+    <span> {{ buttonText }}</span>
+    <span
+      v-if="walletStore.getEns !== ''"
+      class="text-xs font-light text-fmuted font-plex"
+    >
+      {{ walletStore.getShortAddress }}
+    </span>
   </button>
 </template>
 <script setup lang="ts">
@@ -34,12 +42,12 @@ let buttonText = $computed(() => {
   }
 });
 let buttonColor = $computed(() => {
-  if (buttonText !== "Install Metamask") {
-    return "bg-accent text-base00";
+  if (buttonText === "Install Metamask") {
+    return "bg-secondary text-foreground shadow";
   } else if (buttonText === "Connect to Metamask") {
-    return "bg-primary text-base00";
+    return "bg-primary text-base00 shadow";
   }
-  return "bg-secondary text-foreground";
+  return "bg-transparent text-foreground";
 });
 
 const handleButton = async () => {

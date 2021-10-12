@@ -11,4 +11,4 @@ src/types/chain
 .env
 .fleek.json
 .env.production
-env.develop
+.env.development

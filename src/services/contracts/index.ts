@@ -141,6 +141,31 @@ async function getEthBalance(walletAddress: string): Promise<string> {
   }
 }
 
+async function getAvatarUri(ensOrAddress: string): Promise<string> {
+  try {
+    const provider = await initAlchemyProvider();
+    let ensName = "";
+    if (isAddress(ensOrAddress)) {
+      ensName = await lookupAddress(ensOrAddress);
+    } else {
+      ensName = ensOrAddress;
+    }
+    const resolver = await provider.getResolver(ensName);
+    const avatarUri = await resolver.getText("avatar");
+    if (avatarUri && avatarUri.length > 0) {
+      return avatarUri;
+    } else {
+      return "";
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error("Error getting the avatar uri");
+    }
+  }
+}
+
 export {
   initWeb3Provider,
   getBlock,
@@ -149,4 +174,7 @@ export {
   lookupAddress,
   getNetwork,
   initAlchemyProvider,
+  getAvatarUri,
 };
+
+// 0x983110309620d911731ac0932219af06091b6744

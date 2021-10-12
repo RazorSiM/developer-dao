@@ -32,7 +32,7 @@
           absolute
           rounded-md
           mt-1
-          right-0
+          left-0
           shadow-lg
           bg-base01
           max-h-300px

@@ -1,6 +1,7 @@
 <template>
   <div class="flex items-center justify-between gap-5 flex-wrap">
     <div class="justify-self-end flex items-center gap-5">
+      <ThemePicker />
       <a href="https://github.com/RazorSiM/developer-dao" target="_blank">
         <IconCodiconGithubInverted
           class="h-8 w-8 transition hover:(text-primary)"
@@ -10,8 +11,7 @@
         <IconCodiconTwitter class="h-8 w-8 transition hover:(text-primary)" />
       </a>
     </div>
-    <div class="justify-self-end flex items-center gap-5">
-      <ThemePicker />
+    <div class="justify-self-end flex items-center gap-2.5">
       <MetamaskConnect />
     </div>
   </div>
