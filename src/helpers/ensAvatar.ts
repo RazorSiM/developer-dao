@@ -140,7 +140,6 @@ const getAvatarImageUrl = async (
     }
   } else if (address && match721 && match721.length === 3) {
     const contractId = match721[1].toLowerCase();
-    // console.log(contractId);
     const tokenId = match721[2];
     const normalizedAddress = address.toLowerCase();
     try {
