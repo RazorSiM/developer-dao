@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs">
+  <div class="text-xs font-plex text-center font-bold">
     Handcrafted by
     <a href="https://twitter.com/Razor_SiM" target="_blank" class="text-primary"
       >me</a
