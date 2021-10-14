@@ -18,13 +18,15 @@
     "
     @click="handleButton()"
   >
-    <span> {{ buttonText }}</span>
-    <span
-      v-if="walletStore.getEns !== ''"
-      class="text-xs font-light text-fmuted font-plex"
-    >
-      {{ walletStore.getShortAddress }}
-    </span>
+    <template v-if="walletStore.getEns !== ''">
+      <span> {{ buttonText }}</span>
+      <span class="text-xs font-light text-fmuted font-plex">{{
+        walletStore.getShortAddress
+      }}</span>
+    </template>
+    <span v-else class="text-sm font-semibold text-fmuted font-plex">{{
+      walletStore.getShortAddress
+    }}</span>
   </button>
 </template>
 <script setup lang="ts">

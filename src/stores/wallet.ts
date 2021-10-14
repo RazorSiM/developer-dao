@@ -11,6 +11,7 @@ import {
 } from "~/services/contracts";
 
 import { defineStore } from "pinia";
+import { e } from "ohmyfetch/dist/error-098b6ad3";
 import { getAvatarImageUrl } from "~/helpers/ensAvatar";
 
 export const useWalletStore = defineStore({
@@ -85,10 +86,13 @@ export const useWalletStore = defineStore({
         if (accounts.length > 0) {
           this.address = accounts[0];
           this.ens = await lookupAddress(accounts[0]);
-          this.avatar = await getAvatarImageUrl(
-            await getAvatarUri(this.ens),
-            this.ens
-          );
+          this.ens !== ""
+            ? (this.avatar = await getAvatarImageUrl(
+                await getAvatarUri(this.ens),
+                this.ens
+              ))
+            : (this.avatar = "");
+
           this.connected = true;
           this.walletType = "Metamask";
           this.ethBalance = await getEthBalance(this.address);
