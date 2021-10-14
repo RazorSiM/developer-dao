@@ -11,7 +11,7 @@
         <IconCodiconTwitter class="h-8 w-8 transition hover:(text-primary)" />
       </a>
     </div>
-    <div class="justify-self-end flex items-center gap-2.5">
+    <div class="justify-self-end flex items-center gap-0.5">
       <MetamaskConnect />
     </div>
   </div>
