@@ -45,7 +45,9 @@ export const useWalletStore = defineStore({
     },
     getAddress: (state) => state.address,
     getShortAddress: (state) =>
-      state.address.substring(0, 6) + "...." + state.address.substring(38),
+      state.address !== ""
+        ? state.address.substring(0, 6) + "...." + state.address.substring(38)
+        : "",
     getEns: (state) => state.ens,
     getAvatar: (state) => state.avatar,
     getEthBalance: (state) => parseFloat(state.ethBalance).toFixed(3),

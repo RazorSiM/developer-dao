@@ -25,7 +25,7 @@
       }}</span>
     </template>
     <span v-else class="text-sm font-semibold text-fmuted font-plex">{{
-      walletStore.getShortAddress
+      buttonText
     }}</span>
   </button>
 </template>
@@ -36,7 +36,7 @@ let buttonText = $computed(() => {
   if (walletStore.installed === false) {
     return "Install Metamask";
   } else if (walletStore.getAddress !== "") {
-    return walletStore.getEns
+    return walletStore.getEns !== ""
       ? walletStore.getEns
       : walletStore.getShortAddress;
   } else {
