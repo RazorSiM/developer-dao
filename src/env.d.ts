@@ -4,3 +4,6 @@
 interface ImportMetaEnv {
   VITE_ALCHEMY_KEY: string;
 }
+interface Window {
+  ethereum: any;
+}
