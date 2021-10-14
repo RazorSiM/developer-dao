@@ -4,7 +4,11 @@
       class="
         bg-base02
         rounded-full
-        p-2
+        h-8
+        w-8
+        flex
+        items-center
+        justify-center
         ring-1 ring-transparent
         focus:(outline-none
         )

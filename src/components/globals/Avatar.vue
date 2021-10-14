@@ -1,13 +1,13 @@
 <template>
   <img
     v-if="walletStore.getAvatar !== ''"
-    class="h-5 w-5"
+    class="h-10 w-10 rounded-full shadow-xl"
     :src="walletStore.getAvatar"
     alt=""
   />
   <img
     v-if="walletStore.getAvatar === '' && walletStore.getAddress !== ''"
-    class="h-8 w-8 rounded-full"
+    class="h-10 w-10 rounded-full shadow-xl"
     :src="blockie"
     alt=""
   />
