@@ -176,5 +176,3 @@ export {
   initAlchemyProvider,
   getAvatarUri,
 };
-
-// 0x983110309620d911731ac0932219af06091b6744
