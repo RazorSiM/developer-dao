@@ -11,7 +11,6 @@ import {
 } from "~/services/contracts";
 
 import { defineStore } from "pinia";
-import { e } from "ohmyfetch/dist/error-098b6ad3";
 import { getAvatarImageUrl } from "~/helpers/ensAvatar";
 
 export const useWalletStore = defineStore({
